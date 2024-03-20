@@ -22,10 +22,10 @@ export class UsersService {
 
   async findOne(id: number) {
     return this.databaseService.user.findUnique({
-      where: {
-        id,
-        
-      }
+      where: { id },
+      include: {
+        posts: true,
+      },
     });
   }
 
