@@ -13,13 +13,18 @@ export class UsersService {
   }
 
   async findAll() {
-    return this.databaseService.user.findMany();
+    return this.databaseService.user.findMany({
+      include: {
+        posts: true
+      }
+    });
   }
 
   async findOne(id: number) {
     return this.databaseService.user.findUnique({
       where: {
         id,
+        
       }
     });
   }
